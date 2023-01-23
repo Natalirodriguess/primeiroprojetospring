@@ -1,10 +1,20 @@
 package com.primeiroprojetospring.usuariodept.entities;
 
+import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "tb_usuario")
 public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
 
+    @ManyToOne
+    @JoinColumn(name = "departamento_id")
     private Departamento departamento;
 
     public Usuario(){
